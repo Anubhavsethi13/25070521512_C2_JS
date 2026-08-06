@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Billing Calculator</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(
+          135deg,
+          #f8fafc 0%,
+          #e0f2fe 45%,
+          #bfdbfe 100%
+        );
+        min-height: 100vh;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #0f172a;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      h2 {
+        color: #0f172a;
+        margin-bottom: 6px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+      }
+
+      .subtitle {
+        color: #475569;
+        margin-top: 0;
+        margin-bottom: 16px;
+        font-size: 0.95rem;
+        text-align: center;
+      }
+
+      .bill-card {
+        width: 440px;
+        max-width: 100%;
+        background: #ffffff;
+        padding: 28px;
+        border-radius: 18px;
+        box-shadow: 0 16px 35px rgba(15, 23, 42, 0.12);
+        border: 1px solid #dbeafe;
+        margin: 10px auto 0;
+      }
+
+      .store-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, #2563eb, #3b82f6);
+        color: #fff;
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+        box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
+      }
+
+      .bill-card h3 {
+        margin-top: 0;
+        margin-bottom: 16px;
+        color: #1d4ed8;
+        font-size: 1.3rem;
+        text-align: left;
+      }
+
+      .bill-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+        font-size: 0.95rem;
+        gap: 10px;
+      }
+
+      .bill-row strong {
+        color: #475569;
+        font-weight: 600;
+      }
+
+      .bill-row span {
+        color: #0f172a;
+        font-weight: 700;
+        text-align: right;
+      }
+
+      .divider {
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          #bfdbfe,
+          transparent
+        );
+        margin: 16px 0;
+      }
+
+      .final-bill {
+        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1px solid #93c5fd;
+        margin-top: 15px;
+      }
+
+      .final-bill .bill-row {
+        margin-bottom: 0;
+      }
+
+      .final-bill span {
+        color: #1d4ed8;
+        font-size: 1.08rem;
+        font-weight: 800;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>🛍️ Shop Checkout</h2>
+    <p class="subtitle">Your online shopping bill at a glance</p>
+
+    <script>
+      const GST = 0.18; // GST rate in percentage
+
+      var customerName = prompt("Please enter your name:");
+      var productName = prompt("Please enter the product name:");
+      var quantity = Number(prompt("Enter the quantity :"));
+      let price = Number(prompt("Enter the price :"));
+
+      //calculation
+      let totalAmount = quantity * price;
+      let gstAmount = totalAmount * GST;
+      let FinalBill = totalAmount + gstAmount;
+
+      //object
+      const billDetails = {
+        customerName: customerName,
+        productName: productName,
+        quantity: quantity,
+        price: price,
+        totalAmount: totalAmount,
+        gstAmount: gstAmount,
+        FinalBill: FinalBill,
+      };
+
+      //destructuring
+      const {
+        customerName: name,
+        productName: product,
+        quantity: qty,
+        price: unitPrice,
+        totalAmount: total,
+        gstAmount: gst,
+        FinalBill: finalBill,
+      } = billDetails;
+
+      //output
+      document.write("<div class='bill-card'>");
+      document.write("<div class='store-badge'>🛒</div>");
+      document.write("<h3>Order Summary</h3>");
+      document.write(
+        "<div class='bill-row'><strong>Customer Name:</strong> <span>" +
+          (name || "N/A") +
+          "</span></div>",
+      );
+      document.write(
+        "<div class='bill-row'><strong>Product Name:</strong> <span>" +
+          (product || "N/A") +
+          "</span></div>",
+      );
+      document.write(
+        "<div class='bill-row'><strong>Quantity:</strong> <span>" +
+          (qty || 0) +
+          "</span></div>",
+      );
+      document.write(
+        "<div class='bill-row'><strong>Unit Price:</strong> <span>$" +
+          (unitPrice ? unitPrice.toFixed(2) : "0.00") +
+          "</span></div>",
+      );
+      document.write("<div class='divider'></div>");
+      document.write(
+        "<div class='bill-row'><strong>Total Amount:</strong> <span>$" +
+          (total ? total.toFixed(2) : "0.00") +
+          "</span></div>",
+      );
+      document.write(
+        "<div class='bill-row'><strong>GST Amount:</strong> <span>$" +
+          (gst ? gst.toFixed(2) : "0.00") +
+          "</span></div>",
+      );
+      document.write("<div class='final-bill'>");
+      document.write(
+        "<div class='bill-row'><strong>Final Bill:</strong> <span>$" +
+          (finalBill ? finalBill.toFixed(2) : "0.00") +
+          "</span></div>",
+      );
+      document.write("</div>");
+      document.write("</div>");
+    </script>
+  </body>
+</html>

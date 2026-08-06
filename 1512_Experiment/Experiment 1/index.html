@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple JavaScript Demo</title>
+    <link rel="stylesheet" href="style.css?v=2" />
+  </head>
+  <body>
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <div class="container">
+      <h1>Welcome to JavaScript Demo</h1>
+
+      <!-- User Info Section -->
+      <div class="profile-card">
+        <h2>Welcome Message</h2>
+        <p id="welcome-text">Hello! Welcome to the website prototype.</p>
+
+        <h3>User Information</h3>
+        <div id="user-info">
+          <p><strong>Name:</strong> <span id="user-name">Anubhav</span></p>
+          <p>
+            <strong>Email:</strong>
+            <span id="user-email">anubhav@example.com</span>
+          </p>
+          <p><strong>Age:</strong> <span id="user-age">25</span></p>
+        </div>
+      </div>
+
+      <!-- Buttons demonstrating JS styles -->
+      <div class="button-section">
+        <!-- 1. Inline JavaScript -->
+        <button
+          onclick="
+            console.warn('Inline JS: Warning logged on button click!');
+            showToast('Inline JS: Welcome, Anubhav! ✨', 'warning');
+          "
+        >
+          Trigger Inline JS
+        </button>
+
+        <!-- 2. Internal JavaScript -->
+        <button id="btn-internal">Trigger Internal JS</button>
+
+        <!-- 3. External JavaScript -->
+        <button id="btn-external">Trigger External JS</button>
+      </div>
+
+      <p class="footer-note">
+        *Note: Open your browser Console (Press F12) to see logs, warnings, and
+        tables.
+      </p>
+    </div>
+
+    <!-- Link to External JavaScript -->
+    <script src="script.js"></script>
+
+    <!-- INTERNAL JAVASCRIPT -->
+    <script>
+      // Console log when internal script runs
+      console.log("Internal JS script tag loaded.");
+      console.info(
+        "Internal JS can update page content and respond to user actions.",
+      );
+
+      // Fill the welcome text and user info from the shared userData object
+      const welcomeText = document.getElementById("welcome-text");
+      const nameField = document.getElementById("user-name");
+      const emailField = document.getElementById("user-email");
+      const ageField = document.getElementById("user-age");
+
+      if (
+        welcomeText &&
+        nameField &&
+        emailField &&
+        ageField &&
+        typeof userData !== "undefined"
+      ) {
+        welcomeText.textContent = `Hello ${userData.name}! Welcome to your JavaScript demo page.`;
+        nameField.textContent = userData.name;
+        emailField.textContent = userData.email;
+        ageField.textContent = userData.age;
+        console.log("Internal JS: User info updated on the page.");
+      }
+      // Handle Internal Button Click
+      document
+        .getElementById("btn-internal")
+        .addEventListener("click", function () {
+          // Use console.error (Console Method 3)
+          console.error("Internal JS: Error simulation logged on click!");
+          showToast("Hello from Internal JS! 🚀", "info");
+        });
+    </script>
+  </body>
+</html>
