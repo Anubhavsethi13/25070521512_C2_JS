@@ -1,0 +1,505 @@
+/* Simple & Basic Shopping Bill Calculator Stylesheet */
+
+:root {
+    --primary-color: #3b82f6;       /* Clean Blue Accent */
+    --primary-hover: #2563eb;
+    --text-dark: #1f2937;           /* Charcoal */
+    --text-muted: #6b7280;          /* Soft Gray */
+    --bg-main: #f9fafb;             /* Pure light gray background */
+    --bg-card: #ffffff;             /* Card white */
+    --border-color: #e5e7eb;
+    --danger-color: #ef4444;        /* Error/Delete */
+    --success-color: #10b981;       /* Discount/Success */
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --radius-md: 10px;
+    --font-primary: 'Outfit', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+    --transition: all 0.2s ease-in-out;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+    line-height: 1.5;
+    padding: 0.75rem 1rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Header section */
+.header {
+    text-align: center;
+    margin-bottom: 0.75rem;
+}
+
+.header .logo {
+    font-size: 1.75rem;
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+.header p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 1.25rem;
+    align-items: start;
+}
+
+/* Card layout */
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    padding: 1.25rem;
+    transition: var(--transition);
+}
+
+/* Form Styles */
+.form-section {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.form-section:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0.75rem;
+}
+
+.form-section h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.form-section h3 i {
+    color: var(--primary-color);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+}
+
+.grid-customer {
+    grid-template-columns: 1fr 1fr 1.25fr !important;
+}
+
+.grid-product {
+    grid-template-columns: 1.5fr 0.75fr 0.75fr !important;
+}
+
+.grid-modifiers {
+    grid-template-columns: repeat(3, 1fr) !important;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.form-group label {
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.required {
+    color: var(--danger-color);
+}
+
+.form-group input {
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    padding: 0.45rem 0.6rem;
+    border: 1.5px solid var(--border-color);
+    border-radius: 6px;
+    outline: none;
+    transition: var(--transition);
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* Auto-generate Button integration */
+.input-action-wrapper {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.input-action-wrapper input {
+    flex-grow: 1;
+}
+
+.input-action-wrapper button {
+    background-color: var(--bg-main);
+    border: 1.5px solid var(--border-color);
+    color: var(--text-dark);
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: var(--transition);
+}
+
+.input-action-wrapper button:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+/* Payment option radio buttons styling */
+.payment-modes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+}
+
+.payment-option {
+    cursor: pointer;
+}
+
+.payment-option input {
+    display: none;
+}
+
+.payment-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem;
+    background-color: var(--bg-main);
+    border: 1.5px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: var(--transition);
+}
+
+.payment-option input:checked + .payment-text {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+/* Actions buttons styling */
+.form-actions {
+    display: grid;
+    grid-template-columns: 1.4fr 0.6fr;
+    gap: 1rem;
+}
+
+.btn {
+    font-family: var(--font-primary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+    background-color: var(--bg-main);
+    border: 1.5px solid var(--border-color);
+    color: var(--text-dark);
+}
+
+.btn-secondary:hover {
+    background-color: #e5e7eb;
+}
+
+/* Input numbers in monospace font */
+input[type="number"] {
+    font-family: var(--font-mono);
+}
+
+/* Results Display section */
+.result-card {
+    border-color: var(--primary-color);
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.result-header h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.btn-print {
+    background: none;
+    border: 1.5px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-family: var(--font-primary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: var(--transition);
+}
+
+.btn-print:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.invoice-meta {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    font-size: 0.85rem;
+}
+
+.invoice-meta .label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.invoice-meta .val {
+    font-weight: 700;
+}
+
+.invoice-meta .sub {
+    color: var(--text-muted);
+}
+
+.text-right {
+    text-align: right;
+}
+
+.divider {
+    border: 0;
+    border-top: 1px dashed var(--border-color);
+    margin: 0.5rem 0;
+}
+
+.divider-double {
+    border: 0;
+    border-top: 3px double var(--text-dark);
+    margin: 0.4rem 0;
+}
+
+.invoice-item-details {
+    font-size: 0.9rem;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.font-mono {
+    font-family: var(--font-mono);
+}
+
+.product-line {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.35rem;
+}
+
+.invoice-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+}
+
+.summary-line span:last-child {
+    font-weight: 600;
+}
+
+.text-success {
+    color: var(--success-color);
+}
+
+.highlight-payment {
+    background-color: var(--bg-main);
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-top: 0.4rem;
+}
+
+.highlight-payment span:last-child {
+    font-weight: 700;
+}
+
+.total-line {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.total-line span:last-child {
+    font-size: 1.2rem;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Custom error input */
+.input-error {
+    border-color: var(--danger-color) !important;
+    background-color: #fef2f2;
+}
+
+/* Result Placeholder layout */
+.result-placeholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--text-muted);
+}
+
+.result-placeholder .placeholder-icon {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    opacity: 0.25;
+    margin-bottom: 1.25rem;
+    animation: floatIcon 3s infinite ease-in-out;
+}
+
+.result-placeholder h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.result-placeholder p {
+    font-size: 0.85rem;
+    max-width: 300px;
+    line-height: 1.5;
+}
+
+@keyframes floatIcon {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* Screen and Print media queries */
+@media (max-width: 850px) {
+    .container {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    .form-group.full-width {
+        grid-column: span 1;
+    }
+    .payment-modes {
+        grid-template-columns: 1fr;
+    }
+    .form-actions {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media print {
+    body {
+        background-color: white !important;
+        color: black !important;
+        padding: 0 !important;
+    }
+    .header, .form-card, .btn-print, .result-placeholder {
+        display: none !important;
+    }
+    .container {
+        max-width: 100% !important;
+        display: block !important;
+    }
+    .result-card {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+    }
+    .result-content {
+        display: block !important;
+    }
+}

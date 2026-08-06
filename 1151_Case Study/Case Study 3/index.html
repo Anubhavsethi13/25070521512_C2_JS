@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GradeHub - Student Grading System</title>
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Theme Switcher & Accent Glows -->
+    <div class="accent-glow glow-1"></div>
+    <div class="accent-glow glow-2"></div>
+
+    <!-- MAIN APP CONTAINER -->
+    <div id="app">
+        
+        <!-- SECTION 1: LOGIN AUTHENTICATION -->
+        <section id="auth-section" class="active-section">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h1>GradeHub</h1>
+                    <p class="subtitle">Educator Administration Portal</p>
+                </div>
+                
+                <form id="login-form" novalidate>
+                    <!-- Email Field -->
+                    <div class="input-group">
+                        <label for="login-email">Email Address</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-envelope input-icon"></i>
+                            <input type="email" id="login-email" placeholder="admin@gradehub.com" autocomplete="email" required>
+                        </div>
+                        <span class="error-message" id="email-error">Please enter a valid email address</span>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="input-group">
+                        <label for="login-password">Password</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock input-icon"></i>
+                            <input type="password" id="login-password" placeholder="••••••••" required>
+                            <button type="button" id="toggle-password" class="toggle-password-btn">
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+                        </div>
+                        <span class="error-message" id="password-error">Password must be at least 6 characters long</span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary btn-block" id="login-submit-btn">
+                        <span>Sign In</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    
+                    <div class="demo-credentials">
+                        <p><i class="fa-solid fa-circle-info"></i> Demo: <strong>admin@gradehub.com</strong> / <strong>admin123</strong></p>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- SECTION 2: DASHBOARD -->
+        <section id="dashboard-section">
+            <!-- Navigation Header -->
+            <header class="dashboard-header">
+                <div class="header-brand">
+                    <div class="logo-icon-sm">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h2>GradeHub</h2>
+                    <span class="badge badge-primary">Admin</span>
+                </div>
+                
+                <div class="header-user">
+                    <div class="user-avatar" id="user-avatar-initials">AD</div>
+                    <div class="user-info">
+                        <span class="user-name">Welcome, Admin</span>
+                        <span class="user-role" id="user-display-email">admin@gradehub.com</span>
+                    </div>
+                    <button id="logout-btn" class="btn btn-outline btn-sm">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span>Logout</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Dashboard Content Container -->
+            <main class="dashboard-content">
+                <!-- Stats Summary Cards -->
+                <div class="stats-grid">
+                    <!-- Stat Card 1 -->
+                    <div class="stat-card">
+                        <div class="stat-icon icon-indigo">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Total Students</h3>
+                            <p class="stat-value" id="stat-total-students">0</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Stat Card 2 -->
+                    <div class="stat-card">
+                        <div class="stat-icon icon-cyan">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Class Average</h3>
+                            <p class="stat-value" id="stat-class-average">0.0%</p>
+                        </div>
+                    </div>
+
+                    <!-- Stat Card 3 -->
+                    <div class="stat-card">
+                        <div class="stat-icon icon-emerald">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Pass Rate</h3>
+                            <p class="stat-value" id="stat-pass-rate">0.0%</p>
+                        </div>
+                    </div>
+
+                    <!-- Stat Card 4 -->
+                    <div class="stat-card">
+                        <div class="stat-icon icon-amber">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Top Performer</h3>
+                            <p class="stat-value text-truncate" id="stat-top-performer" style="font-size: 1.25rem; font-weight: 700; margin-top: 5px;">N/A</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Data Management Card -->
+                <div class="data-card">
+                    <!-- Controls (Search, Filters, Action Button) -->
+                    <div class="controls-bar">
+                        <div class="search-box">
+                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                            <input type="text" id="search-input" placeholder="Search by student name or roll number...">
+                        </div>
+                        
+                        <div class="filters-group">
+                            <div class="select-wrapper">
+                                <select id="filter-grade">
+                                    <option value="all">All Grades</option>
+                                    <option value="A">Grade A (≥90%)</option>
+                                    <option value="B">Grade B (80-89%)</option>
+                                    <option value="C">Grade C (70-79%)</option>
+                                    <option value="D">Grade D (60-69%)</option>
+                                    <option value="F">Grade F (&lt;60%)</option>
+                                </select>
+                            </div>
+
+                            <div class="select-wrapper">
+                                <select id="filter-status">
+                                    <option value="all">All Statuses</option>
+                                    <option value="Pass">Passed</option>
+                                    <option value="Fail">Failed</option>
+                                </select>
+                            </div>
+
+                            <button id="add-student-btn" class="btn btn-primary">
+                                <i class="fa-solid fa-plus"></i>
+                                <span>Add Student</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Students Data Table -->
+                    <div class="table-container">
+                        <table id="students-table">
+                            <thead>
+                                <tr>
+                                    <th>Student Details</th>
+                                    <th>Roll Number</th>
+                                    <th>Math</th>
+                                    <th>Science</th>
+                                    <th>English</th>
+                                    <th>Total</th>
+                                    <th>Percentage</th>
+                                    <th>Grade</th>
+                                    <th>Status</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="students-table-body">
+                                <!-- Dynamic Rows Go Here -->
+                            </tbody>
+                        </table>
+
+                        <!-- Empty State -->
+                        <div id="empty-state" class="empty-state">
+                            <div class="empty-icon">
+                                <i class="fa-regular fa-folder-open"></i>
+                            </div>
+                            <h3>No Student Records Found</h3>
+                            <p>Get started by adding your first student record to the system.</p>
+                            <button id="empty-state-add-btn" class="btn btn-primary btn-sm">
+                                <i class="fa-solid fa-plus"></i> Add Student
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </section>
+
+        <!-- ADD/EDIT STUDENT MODAL -->
+        <div id="student-modal" class="modal-overlay">
+            <div class="modal-card">
+                <div class="modal-header">
+                    <h3 id="modal-title">Add New Student</h3>
+                    <button class="close-modal-btn" id="close-modal-btn">&times;</button>
+                </div>
+                
+                <form id="student-form" novalidate>
+                    <input type="hidden" id="edit-index" value="">
+                    
+                    <div class="modal-body">
+                        <!-- Student Name -->
+                        <div class="input-group">
+                            <label for="student-name">Student Full Name</label>
+                            <input type="text" id="student-name" placeholder="John Doe" required autocomplete="off">
+                            <span class="error-message" id="name-error">Name must only contain letters and spaces (min 2 chars)</span>
+                        </div>
+
+                        <!-- Roll Number -->
+                        <div class="input-group">
+                            <label for="student-roll">Roll Number / ID</label>
+                            <input type="text" id="student-roll" placeholder="STU-2026-001" required autocomplete="off">
+                            <span class="error-message" id="roll-error">Roll number must be unique and alphanumeric (e.g., STU101)</span>
+                        </div>
+
+                        <!-- Marks Grid -->
+                        <div class="marks-input-grid">
+                            <!-- Math Marks -->
+                            <div class="input-group">
+                                <label for="student-math">Mathematics Marks</label>
+                                <input type="number" id="student-math" placeholder="0-100" min="0" max="100" required>
+                                <span class="error-message" id="math-error">Enter a score between 0 and 100</span>
+                            </div>
+
+                            <!-- Science Marks -->
+                            <div class="input-group">
+                                <label for="student-science">Science Marks</label>
+                                <input type="number" id="student-science" placeholder="0-100" min="0" max="100" required>
+                                <span class="error-message" id="science-error">Enter a score between 0 and 100</span>
+                            </div>
+
+                            <!-- English Marks -->
+                            <div class="input-group">
+                                <label for="student-english">English Marks</label>
+                                <input type="number" id="student-english" placeholder="0-100" min="0" max="100" required>
+                                <span class="error-message" id="english-error">Enter a score between 0 and 100</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline" id="cancel-modal-btn">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="save-student-btn">
+                            <i class="fa-solid fa-floppy-disk"></i> Save Record
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Toast Notifications Container -->
+        <div id="toast-container" class="toast-container"></div>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
