@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopEase</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="watermark">Name: Anubhav Sethi | PRN: 25070521512</div>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="topbar-brand">
+          <span class="logo">S</span>
+          <div>
+            <p class="brand-name">ShopEase</p>
+            <p class="brand-tag">Simple ecommerce billing</p>
+          </div>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="pane">
+          <div class="card">
+            <div class="card-header">
+              <h2>Product selection</h2>
+              <p>Pick a category, choose a product, or enter your own item.</p>
+            </div>
+
+            <div class="form-grid">
+              <label>
+                Category
+                <select id="category-select"></select>
+              </label>
+
+              <label>
+                Product
+                <select id="product-select"></select>
+              </label>
+
+              <label class="hidden" id="custom-name-row">
+                Product name
+                <input
+                  id="product-name"
+                  type="text"
+                  placeholder="Custom product name"
+                />
+              </label>
+
+              <label>
+                Quantity
+                <input id="product-quantity" type="number" min="1" value="1" />
+              </label>
+
+              <label>
+                Price
+                <input
+                  id="product-price"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  value="0.00"
+                />
+              </label>
+
+              <button id="add-product" class="primary-button">Add item</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="pane">
+          <div class="card">
+            <div class="card-header">
+              <h2>Cart</h2>
+              <p>View items you added to the bill.</p>
+            </div>
+            <ul id="bill-items" class="cart-items"></ul>
+          </div>
+        </section>
+
+        <section class="pane">
+          <div class="summary-card">
+            <div class="summary-header">
+              <p class="eyebrow">Summary</p>
+              <h2>Invoice total</h2>
+            </div>
+
+            <div class="summary-list">
+              <div class="summary-row">
+                <span>Subtotal</span>
+                <strong id="subtotal">₹0.00</strong>
+              </div>
+              <div class="summary-row">
+                <span>Discount</span>
+                <strong id="discount-percent">0%</strong>
+              </div>
+              <div class="summary-row">
+                <span>Discount amount</span>
+                <strong id="discount-amount">₹0.00</strong>
+              </div>
+              <div class="summary-row total">
+                <span>Total</span>
+                <strong id="total">₹0.00</strong>
+              </div>
+            </div>
+
+            <button class="primary-button checkout-button">Checkout</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

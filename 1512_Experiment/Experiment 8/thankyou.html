@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thank You | FORGE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="thank-you-page">
+    <main class="thank-you-shell" aria-labelledby="thankYouTitle">
+      <div class="thank-you-mark" aria-hidden="true">✓</div>
+      <p class="eyebrow">Admission confirmed</p>
+      <h1 id="thankYouTitle">
+        Congratulations,<br /><span id="memberName">member</span>.
+      </h1>
+      <p class="thank-you-copy">
+        Thank you for joining FORGE. Your
+        <strong id="memberPlan">membership</strong> request is on its way to our
+        team.
+      </p>
+      <p class="thank-you-note">
+        We will contact you shortly with your first-session details.
+      </p>
+      <a class="back-link" href="index.html">Back to admission form</a>
+    </main>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      document.getElementById("memberName").textContent =
+        params.get("name") || "member";
+      document.getElementById("memberPlan").textContent =
+        params.get("plan") || "membership";
+    </script>
+  </body>
+</html>

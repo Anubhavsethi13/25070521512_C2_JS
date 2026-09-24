@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Preference Vault</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=DM+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!-- THESIS: A storage preference demo makes browser persistence visible and easy to test. OWN-WORLD: Ink, paper, and signal-blue controls with a compact lab-notebook layout. STORY: Choose a theme, choose its storage lifetime, then reload to verify the result. FIRST VIEWPORT: The title and live preview lead into the two theme choices and storage controls. FORM: Operate surface, code-led, static HTML/CSS/JS. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md -->
+    <main class="page-shell">
+      <section class="intro" aria-labelledby="page-title">
+        <div class="brand-mark" aria-hidden="true">PV</div>
+        <p class="eyebrow">Browser preferences / experiment 09</p>
+        <h1 id="page-title">Make your browser remember the mood.</h1>
+        <p class="intro-copy">
+          Pick a visual mode, decide how long it should last, and see the
+          browser storage APIs work in real time.
+        </p>
+      </section>
+
+      <section class="workspace" aria-label="Preference controls">
+        <div class="preview-panel">
+          <div class="preview-topline">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span>Live preview</span>
+            <span class="preview-code"
+              >theme: <strong id="preview-theme">paper</strong></span
+            >
+          </div>
+          <div class="preview-content">
+            <p class="preview-label">Anubhav Sethi - 25070521512</p>
+            <h2 id="preview-heading">Paper mode</h2>
+            <p id="preview-description">
+              Bright surfaces, crisp ink, and a little room to think.
+            </p>
+            <div class="preview-lines" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+
+        <form class="settings-panel" id="preferences-form">
+          <fieldset>
+            <legend>Choose a theme</legend>
+            <div class="theme-options">
+              <label class="theme-option">
+                <input type="radio" name="theme" value="paper" />
+                <span class="option-card">
+                  <span class="swatch swatch-paper" aria-hidden="true"></span>
+                  <span
+                    ><strong>Paper</strong
+                    ><small>Light and focused</small></span
+                  >
+                  <span class="radio-mark" aria-hidden="true"></span>
+                </span>
+              </label>
+              <label class="theme-option">
+                <input type="radio" name="theme" value="midnight" />
+                <span class="option-card">
+                  <span
+                    class="swatch swatch-midnight"
+                    aria-hidden="true"
+                  ></span>
+                  <span
+                    ><strong>Midnight</strong
+                    ><small>Quiet and low-glare</small></span
+                  >
+                  <span class="radio-mark" aria-hidden="true"></span>
+                </span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Save preference in</legend>
+            <div class="storage-options">
+              <label class="storage-option">
+                <input type="radio" name="storage" value="local" />
+                <span class="storage-copy"
+                  ><strong>Local storage</strong
+                  ><small>Stays after closing the browser</small></span
+                >
+              </label>
+              <label class="storage-option">
+                <input type="radio" name="storage" value="session" />
+                <span class="storage-copy"
+                  ><strong>Session storage</strong
+                  ><small>Lasts until this tab is closed</small></span
+                >
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="actions">
+            <button class="save-button" type="submit">
+              Save preference <span aria-hidden="true">&#8599;</span>
+            </button>
+            <button class="reset-button" type="button" id="reset-button">
+              Reset saved data
+            </button>
+          </div>
+          <p class="feedback" id="feedback" role="status" aria-live="polite">
+            Choose your settings, then save them.
+          </p>
+        </form>
+      </section>
+
+      <section class="activity-panel" aria-labelledby="activity-title">
+        <div class="activity-heading">
+          <div>
+            <p class="eyebrow">Session activity</p>
+            <h2 id="activity-title">What happened here</h2>
+          </div>
+          <span class="activity-count" id="activity-count">0 events</span>
+        </div>
+        <ol class="activity-log" id="activity-log" aria-live="polite"></ol>
+      </section>
+
+      <footer class="page-footer">
+        <span>Storage API playground</span>
+        <span class="footer-rule" aria-hidden="true"></span>
+        <span id="storage-readout">No saved preference yet</span>
+      </footer>
+    </main>
+  </body>
+</html>

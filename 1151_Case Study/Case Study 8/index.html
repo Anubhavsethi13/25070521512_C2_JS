@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Online job application form" />
+    <title>Apply | Northstar Careers</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!-- THESIS: A focused application desk that makes a complete, accurate application feel straightforward.
+       OWN-WORLD: Ink navy, paper white, electric coral, crisp rules, and generous editorial spacing.
+       STORY: Applicants move from identity to education, experience, and skills, with guidance at the point of entry.
+       FIRST VIEWPORT: The title and progress cue sit beside the opening personal-information fields; the form begins immediately.
+       FORM: A single long-form application with native constraints and immediate custom feedback.
+       FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md -->
+    <main class="page-shell">
+      <header class="intro-panel">
+        <div class="brand-mark" aria-label="Northstar Careers">
+          NS<span>/</span>CAREERS
+        </div>
+        <div class="intro-content">
+          <p class="eyebrow">Online application / 2026 intake</p>
+          <h1>Make your next move count.</h1>
+          <p class="intro-copy">
+            Tell us where you have been, what you know, and where you want to go.
+            Your application should take about 8 minutes.
+          </p>
+        </div>
+        <div class="intro-aside">
+          <p class="aside-label">Ready when you are</p>
+          <div class="completion-note">
+            <span class="completion-dot"></span>
+            <span>All fields marked <strong>*</strong> are required</span>
+          </div>
+        </div>
+      </header>
+
+      <nav class="stepper" aria-label="Application progress">
+        <button class="step-chip active" type="button" data-step="0" aria-current="step">
+          <span>01</span> Personal
+        </button>
+        <button class="step-chip" type="button" data-step="1">
+          <span>02</span> Education
+        </button>
+        <button class="step-chip" type="button" data-step="2">
+          <span>03</span> Experience
+        </button>
+        <button class="step-chip" type="button" data-step="3">
+          <span>04</span> Skills
+        </button>
+      </nav>
+
+      <form id="jobApplication" class="application-form" novalidate>
+        <section class="form-section active" aria-labelledby="personal-heading">
+          <div class="section-heading">
+            <span class="section-number">01</span>
+            <div>
+              <h2 id="personal-heading">Personal information</h2>
+              <p>Start with the details we can use to reach you.</p>
+            </div>
+          </div>
+          <div class="field-grid">
+            <div class="field field-wide">
+              <label for="fullName"
+                >Full name <span aria-hidden="true">*</span></label
+              >
+              <input
+                id="fullName"
+                name="fullName"
+                type="text"
+                autocomplete="name"
+                placeholder="e.g. Aisha Sharma"
+                required
+                minlength="2"
+              />
+              <small class="error-message" id="fullNameError"></small>
+            </div>
+            <div class="field">
+              <label for="dateOfBirth"
+                >Date of birth <span aria-hidden="true">*</span></label
+              >
+              <input
+                id="dateOfBirth"
+                name="dateOfBirth"
+                type="date"
+                autocomplete="bday"
+                required
+              />
+              <small class="error-message" id="dateOfBirthError"></small>
+            </div>
+            <fieldset class="field gender-field">
+              <legend>Gender <span aria-hidden="true">*</span></legend>
+              <div class="radio-row">
+                <label
+                  ><input type="radio" name="gender" value="female" required />
+                  <span>Female</span></label
+                >
+                <label
+                  ><input type="radio" name="gender" value="male" />
+                  <span>Male</span></label
+                >
+                <label
+                  ><input type="radio" name="gender" value="other" />
+                  <span>Other</span></label
+                >
+              </div>
+              <small class="error-message" id="genderError"></small>
+            </fieldset>
+            <div class="field">
+              <label for="email"
+                >Email address <span aria-hidden="true">*</span></label
+              >
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                required
+              />
+              <small class="error-message" id="emailError"></small>
+            </div>
+            <div class="field">
+              <label for="mobile"
+                >Mobile number <span aria-hidden="true">*</span></label
+              >
+              <input
+                id="mobile"
+                name="mobile"
+                type="tel"
+                autocomplete="tel"
+                placeholder="10-digit mobile number"
+                required
+                pattern="[0-9]{10}"
+                inputmode="numeric"
+              />
+              <small class="error-message" id="mobileError"></small>
+            </div>
+            <div class="field field-wide">
+              <label for="address"
+                >Address <span aria-hidden="true">*</span></label
+              >
+              <textarea
+                id="address"
+                name="address"
+                autocomplete="street-address"
+                placeholder="House number, street, locality"
+                required
+                minlength="8"
+                rows="3"
+              ></textarea>
+              <small class="error-message" id="addressError"></small>
+            </div>
+            <div class="field">
+              <label for="cityState"
+                >City / State <span aria-hidden="true">*</span></label
+              >
+              <input
+                id="cityState"
+                name="cityState"
+                type="text"
+                placeholder="e.g. Pune, Maharashtra"
+                required
+              />
+              <small class="error-message" id="cityStateError"></small>
+            </div>
+            <div class="field">
+              <label for="pinCode"
+                >PIN code <span aria-hidden="true">*</span></label
+              >
+              <input
+                id="pinCode"
+                name="pinCode"
+                type="text"
+                placeholder="6-digit PIN"
+                required
+                pattern="[0-9]{6}"
+                inputmode="numeric"
+              />
+              <small class="error-message" id="pinCodeError"></small>
+            </div>
+          </div>
+        </section>
+
+        <section class="form-section" aria-labelledby="education-heading">
+          <div class="section-heading">
+            <span class="section-number">02</span>
+            <div>
+              <h2 id="education-heading">Educational qualification</h2>
+              <p>Share the foundation behind your work.</p>
+            </div>
+          </div>
+          <div class="field-grid">
+            <div class="field">
+              <label for="qualification"
+                >Highest qualification <span aria-hidden="true">*</span></label
+              >
+              <select id="qualification" name="qualification" required>
+                <option value="">Select qualification</option>
+                <option>Higher Secondary / 12th</option>
+                <option>Diploma</option>
+                <option>Bachelor's degree</option>
+                <option>Master's degree</option>
+                <option>Doctorate</option>
+                <option>Other</option>
+              </select>
+              <small class="error-message" id="qualificationError"></small>
+            </div>
+            <div class="field">
+              <label for="passingYear"
+                >Passing year <span aria-hidden="true">*</span></label
+              >
+              <input
+                id="passingYear"
+                name="passingYear"
+                type="number"
+                min="1950"
+                max="2026"
+                placeholder="e.g. 2024"
+                required
+              />
+              <small class="error-message" id="passingYearError"></small>
+            </div>
+            <div class="field field-wide">
+              <label for="university"
+                >University / Institute <span aria-hidden="true">*</span></label
+              >
+              <input
+                id="university"
+                name="university"
+                type="text"
+                placeholder="Name of your institution"
+                required
+              />
+              <small class="error-message" id="universityError"></small>
+            </div>
+            <div class="field">
+              <label for="percentage"
+                >Percentage / CGPA <span aria-hidden="true">*</span></label
+              >
+              <input
+                id="percentage"
+                name="percentage"
+                type="text"
+                placeholder="e.g. 8.6 CGPA or 82%"
+                required
+                pattern="[0-9]{1,3}(\.[0-9]{1,2})?\s*(%|[Cc][Gg][Pp][Aa])?"
+              />
+              <small class="error-message" id="percentageError"></small>
+            </div>
+          </div>
+        </section>
+
+        <section class="form-section" aria-labelledby="professional-heading">
+          <div class="section-heading">
+            <span class="section-number">03</span>
+            <div>
+              <h2 id="professional-heading">Professional information</h2>
+              <p>Help us understand the experience you would bring.</p>
+            </div>
+          </div>
+          <div class="field-grid">
+            <div class="field field-wide">
+              <label for="position"
+                >Applying for / Job position
+                <span aria-hidden="true">*</span></label
+              >
+              <input
+                id="position"
+                name="position"
+                type="text"
+                placeholder="e.g. Frontend Developer"
+                required
+              />
+              <small class="error-message" id="positionError"></small>
+            </div>
+            <div class="field">
+              <label for="experience"
+                >Total work experience <span aria-hidden="true">*</span></label
+              >
+              <div class="input-with-suffix">
+                <input
+                  id="experience"
+                  name="experience"
+                  type="number"
+                  min="0"
+                  max="60"
+                  step="0.5"
+                  placeholder="0"
+                  required
+                /><span>years</span>
+              </div>
+              <small class="error-message" id="experienceError"></small>
+            </div>
+            <div class="field">
+              <label for="salary"
+                >Expected salary <span aria-hidden="true">*</span></label
+              >
+              <div class="input-with-prefix">
+                <span>₹</span
+                ><input
+                  id="salary"
+                  name="salary"
+                  type="number"
+                  min="0"
+                  placeholder="Annual amount"
+                  required
+                />
+              </div>
+              <small class="error-message" id="salaryError"></small>
+            </div>
+            <div class="field">
+              <label for="organization"
+                >Current / Previous organization
+                <span aria-hidden="true">*</span></label
+              >
+              <input
+                id="organization"
+                name="organization"
+                type="text"
+                placeholder="Company name"
+                required
+              />
+              <small class="error-message" id="organizationError"></small>
+            </div>
+            <div class="field">
+              <label for="designation"
+                >Current designation <span aria-hidden="true">*</span></label
+              >
+              <input
+                id="designation"
+                name="designation"
+                type="text"
+                placeholder="Your latest role"
+                required
+              />
+              <small class="error-message" id="designationError"></small>
+            </div>
+          </div>
+        </section>
+
+        <section class="form-section" aria-labelledby="skills-heading">
+          <div class="section-heading">
+            <span class="section-number">04</span>
+            <div>
+              <h2 id="skills-heading">Technical skills</h2>
+              <p>Give us a quick view of the tools you use best.</p>
+            </div>
+          </div>
+          <div class="field-grid">
+            <div class="field field-wide">
+              <label for="programmingLanguages"
+                >Programming languages <span aria-hidden="true">*</span></label
+              >
+              <input
+                id="programmingLanguages"
+                name="programmingLanguages"
+                type="text"
+                placeholder="e.g. JavaScript, Python, Java"
+                required
+              />
+              <small
+                class="error-message"
+                id="programmingLanguagesError"
+              ></small>
+            </div>
+            <div class="field field-wide">
+              <label for="technicalSkills"
+                >Technical skills <span aria-hidden="true">*</span></label
+              >
+              <textarea
+                id="technicalSkills"
+                name="technicalSkills"
+                placeholder="e.g. React, SQL, Git, REST APIs"
+                required
+                minlength="3"
+                rows="3"
+              ></textarea>
+              <small class="error-message" id="technicalSkillsError"></small>
+            </div>
+            <div class="field field-wide">
+              <label for="certifications"
+                >Certifications <span class="optional">(optional)</span></label
+              >
+              <textarea
+                id="certifications"
+                name="certifications"
+                placeholder="List relevant certifications, if any"
+                rows="3"
+              ></textarea>
+            </div>
+          </div>
+        </section>
+
+        <div class="step-navigation">
+          <button class="back-button" type="button" id="backButton" hidden>Back</button>
+          <span class="step-count" id="stepCount">Step 1 of 4</span>
+          <button class="next-button" type="button" id="nextButton">Continue <span aria-hidden="true">→</span></button>
+        </div>
+
+        <div class="form-footer">
+          <p class="privacy-note">
+            <span aria-hidden="true">◆</span> Your information is used only for
+            recruitment purposes.
+          </p>
+          <button class="submit-button" type="submit" hidden>
+            Submit application <span aria-hidden="true">→</span>
+          </button>
+          <p
+            class="form-status"
+            id="formStatus"
+            role="status"
+            aria-live="polite"
+          ></p>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

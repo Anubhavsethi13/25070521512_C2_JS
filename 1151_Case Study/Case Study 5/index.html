@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Grade Manager</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>📚 Student Grade Manager</h1>
+      <p class="subtitle">A practical tool using JavaScript Arrays and Loops</p>
+
+      <!-- Add Student Section -->
+      <section class="input-section">
+        <h2>Add Student</h2>
+        <div class="form-group">
+          <input type="text" id="studentName" placeholder="Student Name" />
+          <input
+            type="number"
+            id="studentGrade"
+            placeholder="Grade (0-100)"
+            min="0"
+            max="100"
+          />
+          <button onclick="addStudent()">Add Student (push)</button>
+        </div>
+      </section>
+
+      <!-- Student List Section -->
+      <section class="list-section">
+        <h2>Student List</h2>
+        <div id="studentList" class="student-list">
+          <p class="empty">No students added yet. Add one to get started!</p>
+        </div>
+      </section>
+
+      <!-- Statistics Section -->
+      <section class="stats-section">
+        <h2>Statistics & Analysis</h2>
+
+        <div class="stat-box">
+          <h3>Class Average (reduce)</h3>
+          <p id="averageGrade">-</p>
+          <button onclick="calculateAverage()">Calculate</button>
+        </div>
+
+        <div class="stat-box">
+          <h3>Highest Grade (Math.max)</h3>
+          <p id="highestGrade">-</p>
+          <button onclick="findHighest()">Find Highest</button>
+        </div>
+
+        <div class="stat-box">
+          <h3>Lowest Grade (Math.min)</h3>
+          <p id="lowestGrade">-</p>
+          <button onclick="findLowest()">Find Lowest</button>
+        </div>
+
+        <div class="stat-box">
+          <h3>Top Performer</h3>
+          <p id="topStudent">-</p>
+          <button onclick="findTopStudent()">Find Top</button>
+        </div>
+      </section>
+
+      <!-- Filters Section -->
+      <section class="filter-section">
+        <h2>Filters (Using filter & map)</h2>
+
+        <div class="filter-box">
+          <h3>Passing Students (≥ 50)</h3>
+          <button onclick="filterPassing()">Show Passing</button>
+          <div id="passingList"></div>
+        </div>
+
+        <div class="filter-box">
+          <h3>Excellent Students (≥ 80)</h3>
+          <button onclick="filterExcellent()">Show Excellent</button>
+          <div id="excellentList"></div>
+        </div>
+
+        <div class="filter-box">
+          <h3>Add 5 Bonus Points</h3>
+          <button onclick="addBonus()">Apply Bonus</button>
+          <div id="bonusList"></div>
+        </div>
+      </section>
+
+      <!-- Actions Section -->
+      <section class="actions-section">
+        <h2>Quick Actions</h2>
+
+        <div class="action-box">
+          <button onclick="removeFirst()" class="danger">
+            Remove First (shift)
+          </button>
+          <button onclick="removeLast()" class="danger">
+            Remove Last (pop)
+          </button>
+          <button onclick="clearAll()" class="danger">Clear All</button>
+        </div>
+
+        <div class="action-box">
+          <button onclick="sortByGrade()" class="success">Sort by Grade</button>
+          <button onclick="resetToDefault()" class="success">
+            Load Sample Data
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

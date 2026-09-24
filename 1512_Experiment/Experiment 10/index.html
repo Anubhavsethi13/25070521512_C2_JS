@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON Data Loader</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <p class="eyebrow">Experiment 10</p>
+      <h1>JSON Data Loader</h1>
+      <p class="subtitle">Load student records with native JavaScript or jQuery and render them in a table.</p>
+    </header>
+
+    <section class="controls" aria-label="Data loading controls">
+      <button id="fetchButton" type="button">Load with fetch()</button>
+      <button id="jqueryButton" type="button">Load with $.getJSON()</button>
+    </section>
+
+    <p id="status" class="status" role="status">Choose a loading method to display the data.</p>
+
+    <section class="table-card" aria-label="Student data">
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Course</th>
+              <th>Score</th>
+              <th>Grade</th>
+            </tr>
+          </thead>
+          <tbody id="dataBody">
+            <tr>
+              <td colspan="5" class="empty">No records loaded yet.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

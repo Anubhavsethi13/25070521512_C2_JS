@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A simple DOM-powered to-do list app." />
+    <title>Daymark | To-do list</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- THESIS: A to-do list should feel like a clear night desk, not a dashboard. OWN-WORLD: midnight navy layers, electric blue, lime, and coral with crisp editorial type. STORY: capture a task, complete it, or edit and remove it directly in the list. FIRST VIEWPORT: the title and add form lead into the live list, with progress visible beside it. FORM: an operate-first single-column workbench. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md -->
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="index.html" aria-label="Daymark home">
+          <span class="brand-mark" aria-hidden="true">D</span>
+          <span>daymark</span>
+        </a>
+      </header>
+
+      <section class="intro" aria-labelledby="pageTitle">
+        <div>
+          <p class="section-label">Your small wins, in order</p>
+          <h1 id="pageTitle">Make room<br /><em>for done.</em></h1>
+        </div>
+        <p class="intro-note">
+          A focused list for the things that move the day forward.
+        </p>
+      </section>
+
+      <section class="workspace" aria-label="To-do workspace">
+        <div class="workspace-heading">
+          <div>
+            <p class="section-label">Current list</p>
+            <h2 id="listTitle">Today’s focus</h2>
+          </div>
+          <div class="progress-summary" aria-live="polite">
+            <strong id="completedCount">0</strong><span>of</span
+            ><strong id="totalCount">0</strong>
+            <small>done</small>
+          </div>
+        </div>
+
+        <form class="task-form" id="taskForm">
+          <label class="sr-only" for="taskInput">Add a task</label>
+          <input
+            id="taskInput"
+            name="task"
+            type="text"
+            maxlength="100"
+            placeholder="What needs your attention?"
+            autocomplete="off"
+            required
+          />
+          <button class="primary-button" type="submit">
+            <span aria-hidden="true">+</span> Add task
+          </button>
+        </form>
+
+        <div class="list-toolbar">
+          <p id="taskMessage" class="task-message" aria-live="polite">
+            Start with one small thing.
+          </p>
+          <div class="filters" role="group" aria-label="Filter tasks">
+            <button
+              class="filter-button is-active"
+              type="button"
+              data-filter="all"
+              aria-pressed="true"
+            >
+              All
+            </button>
+            <button
+              class="filter-button"
+              type="button"
+              data-filter="active"
+              aria-pressed="false"
+            >
+              Open
+            </button>
+            <button
+              class="filter-button"
+              type="button"
+              data-filter="completed"
+              aria-pressed="false"
+            >
+              Done
+            </button>
+          </div>
+        </div>
+
+        <ul class="task-list" id="taskList" aria-live="polite"></ul>
+        <div class="empty-state" id="emptyState">
+          <span class="empty-icon" aria-hidden="true">✦</span>
+          <h3 id="emptyTitle">Nothing here yet.</h3>
+          <p id="emptyDescription">
+            Add a task above and give your attention somewhere useful to land.
+          </p>
+        </div>
+      </section>
+
+      <footer class="footer-note">
+        <span>Built with plain HTML, CSS &amp; JavaScript</span>
+        <span class="footer-dot" aria-hidden="true"></span>
+        <span>Your list stays in this browser</span>
+      </footer>
+    </main>
+    <div
+      class="developer-watermark"
+      aria-label="Developer: Anubhav Sethi, PRN 25070521512"
+    >
+      <span class="watermark-dot" aria-hidden="true"></span>
+      <span>Anubhav Sethi</span>
+      <span class="watermark-divider" aria-hidden="true"></span>
+      <span>PRN 25070521512</span>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

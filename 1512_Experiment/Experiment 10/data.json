@@ -1,0 +1,30 @@
+[
+  {
+    "id": 101,
+    "name": "Aarav Sharma",
+    "course": "JavaScript",
+    "score": 92,
+    "grade": "A"
+  },
+  {
+    "id": 102,
+    "name": "Diya Patel",
+    "course": "Web Design",
+    "score": 86,
+    "grade": "A"
+  },
+  {
+    "id": 103,
+    "name": "Rohan Mehta",
+    "course": "Database Systems",
+    "score": 78,
+    "grade": "B"
+  },
+  {
+    "id": 104,
+    "name": "Meera Singh",
+    "course": "Computer Networks",
+    "score": 88,
+    "grade": "A"
+  }
+]
